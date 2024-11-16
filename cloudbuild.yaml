@@ -2,6 +2,6 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'us-east1-docker.pkg.dev/einfo2024/services/devops-image-test-123:$COMMIT_SHA', '.']
 images:
-  - 'us-east1-docker.pkg.dev/einfo2024/services/devops-image:$COMMIT_SHA'
+  - 'us-east1-docker.pkg.dev/einfo2024/services/devops-image-test-123:$COMMIT_SHA'
 options:
   logging: CLOUD_LOGGING_ONLY
