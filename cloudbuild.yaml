@@ -2,8 +2,14 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'us-east1-docker.pkg.dev/einfo2024/services/devops-image-test-123:${_COMMIT_SHA}', '.']
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['run', 'deploy', 'devops-image-test-123', '--image', 'us-east1-docker.pkg.dev/einfo2024/services/devops-image-test-123', '--region', 'us-east1']
+    args: [
+      'run', 'deploy', 'devops-image-test-123',
+      '--image', 'us-east1-docker.pkg.dev/einfo2024/services/devops-image-test-123:${_COMMIT_SHA}',
+      '--region', 'us-east1',
+      '--platform', 'managed',
+      '--allow-unauthenticated'
+    ]
 images:
   - 'us-east1-docker.pkg.dev/einfo2024/services/devops-image-test-123:${_COMMIT_SHA}'
 options:
-  logging: CLOUD_LOGGING_ONLY  
+  logging: CLOUD_LOGGING_ONLY
